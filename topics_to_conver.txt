@@ -1,0 +1,27 @@
+Install laravel via sail or composer -- done
+setup blade layout -- done
+posts migration -- done
+posts crud -- done
+seed posts -- done
+post validation in controller -- done
+user auth and crud -- done
+user request validation via form request -- done
+user relationship with posts -- working
+seed users -- done
+migration to added user_id to posts -- done
+event/listener on user login -- done 
+DB facade in listener to add log in the table -- done
+job/queue on user logout -- working 
+slug for post migration
+observer for post slug
+notification on post delete
+schedular to send email for total number of posts
+middleware to log request
+guard for admin user
+file upload with web and api
+create api for project
+create form request and response for api
+api integration with vue and react
+check policy contract gate and facade
+create custom service , serive provider and bingin of service
+custom package for laravel which will be compatable with database
