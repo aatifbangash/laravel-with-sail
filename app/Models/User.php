@@ -8,6 +8,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * https://ralphjsmit.com/laravel-eloquent-relationships //check the following for relationship
+ * $this->hasOne() // one to one
+ * $this->belongsTo() // many to one
+ * $this->hasMany() // one to many
+ * $this->hasManyThrough(TargetMode, IntermediateModel) // one to many (User has many Posts through Profile)
+ * $this->hasOneThrough(TargetMode, IntermediateModel) // one to one (User has one Address through Profile)
+ * $this->belongsToMany() // will be added in both tables, many to many (Authnr has Many books, Book has many Authers), 
+ * achieved via pivot table (intermediate table)
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,4 +51,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
 }

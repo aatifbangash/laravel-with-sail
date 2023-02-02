@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
          * $ sail artisan db:seed // following cmd is used to run all the seeders register here.
          */
         // $this->call([PostSeeder::class, UserSeeder::class]);
+
+        $this->call([UserSeeder::class]);
     }
 }

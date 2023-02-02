@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CustomAuthRequest;
 use App\Models\User;
+use App\Providers\LoginHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -31,9 +33,24 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+
+            /**
+             * SOLID:- S means single responsibility
+             * User logged-in event will send here
+             * Events:- are hooks/activity of our application.
+             * Listeners:- are classes which listen to events
+             * NOTE:- Events and Listeners to work, must be register in the EventServiceProvider (core)
+             * 
+             * $ sail artisan make:event LoginHistory // create event in App/Events
+             * $ sail artisan make:listener StoreLoginHistory // create listener in App/Listeners
+             * $ sail artisan event:generate // it will scan the EventServiceProvider class and 
+             * generate the missing events (App/Events) and listeners (App/Listeners)
+             */ 
+            
+             event(new LoginHistory(auth()->user())); // event is used to dispatch EventObject with userObject/data
             return redirect()->route('user.dashboard')->withSuccess('Signed in');
         }
-        return false;
+        return redirect()->back()->with("error", "failed to login");
     }
 
     public function register()
@@ -41,21 +58,16 @@ class CustomAuthController extends Controller
         return View::make("user.register");
     }
 
-    public function store(Request $request)
+    public function store(CustomAuthRequest $request)
     {
-        $request->validate([
-            "name" => "required",
-            "email" => "required",
-            "password" => "required",
-        ]);
 
+        // dd($request->validated()); // following return validated data
         User::create([
             "name" => $request->name,
             "email" => $request->email,
             "password" => Hash::make($request->password)
         ]);
         return redirect()->route('user.dashboard')->with("success", "User has been created");
-        // return "here"
     }
 
     public function logout()

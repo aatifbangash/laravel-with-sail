@@ -4,7 +4,7 @@
 <div class="container-fluid bg-1 text-center">
     <div class="container">   
       <a href="{{route("post.list")}}">Go back</a>
-      <h2>List Post</h2>       
+      <h2>List Post - ({{$post->user->email}})</h2>       
         <table class="table">
           <thead>
             <tr>

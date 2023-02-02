@@ -5,6 +5,9 @@
           <div class="row justify-content-center">
               <div class="col-md-4">
                   <div class="card">
+                    @if(session('error'))
+                        <div class="alert alert-danger">{{session('error')}}</div>
+                    @endif    
                     <a href="{{route("user.register")}}">Register</a>
                       <h3 class="card-header text-center">Login User</h3>
                       <div class="card-body">

@@ -12,6 +12,15 @@
       @auth   
       <div>{{ auth() -> user() -> name}}</div>
       <div>{{ Auth::user() -> email }}</div>
+      <div>
+        @if (auth()->user()->posts->count() > 0)
+            @foreach (auth()->user()->posts as $post)
+             <div>{!! $post->title !!}</div>
+             <div>{!! $post->body !!}</div>
+             <hr />
+            @endforeach
+        @endif
+      </div>
       @endauth
       </div>
   </div>
