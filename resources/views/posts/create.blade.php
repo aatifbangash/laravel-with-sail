@@ -1,7 +1,10 @@
 @extends('layout.app')
 @section('content')
   <div class="container-fluid bg-1 text-center">
-    <div class="container">          
+    <div class="container"> 
+      <div>
+      @include('layout.errors')         
+      </div>
       <a href="{{route("post.list")}}">Go Back</a>
       <h2>Create Post</h2>
       <form action="{{route("post.store")}}" method="post" enctype="multipart/form">

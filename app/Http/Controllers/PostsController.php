@@ -25,6 +25,12 @@ class PostsController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            "title" => "required",
+            "body" => "required"
+        ]);
+
         /**
          * Add title and body to $fillable property of the Model
          */
@@ -37,9 +43,11 @@ class PostsController extends Controller
         return redirect()->route("post.list");
     }
 
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return View::make("posts.show", [
+            'post' => $post,
+        ]);
     }
 
     public function edit($id)
@@ -52,6 +60,11 @@ class PostsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            "title" => "required",
+            "body" => "required"
+        ]);
+        
         $post = Post::find($id);
         $post->title = $request->title;
         $post->body = $request->body;
@@ -59,6 +72,10 @@ class PostsController extends Controller
         return redirect()->route('post.list');
     }
 
+    /**
+     * Summary of destroy
+     * @param Post $post // following is called the route Model binding
+     */
     public function destroy(Post $post)
     {
         $post->delete();

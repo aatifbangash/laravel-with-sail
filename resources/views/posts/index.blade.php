@@ -18,7 +18,7 @@
             @if ($posts)
                 @foreach ($posts as $post)
                 <tr>
-                  <td>{{$post->id}}</td>
+                  <td><a href="posts/{{$post->id}}">{{$post->id}}</a></td>
                   <td>{{$post->title}}</td>
                   <td>{{$post->body}}</td>
                   <td>

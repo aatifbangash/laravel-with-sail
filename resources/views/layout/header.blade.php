@@ -52,6 +52,13 @@
   .img-responsive {
     max-width: 18% !important;
   }
+  a {
+    color: #f5a4f4;
+    text-decoration: none;
+    /* border-color: white; */
+    border: 1px solid white;
+    padding: 10px;
+}
   </style>
 </head>
 <body>

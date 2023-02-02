@@ -13,9 +13,16 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">WHO</a></li>
-          <li><a href="#">WHAT</a></li>
-          <li><a href="#">WHERE</a></li>
+          @guest
+          <li><a href="{{route('user.register')}}">Register</a></li>
+          <li><a href="{{route('user.login')}}">Login</a></li>
+          @endguest
+
+          @auth
+          <li><a href="#">{{Auth::user()->name}}</a></li> 
+          <li><a href="#">{{auth()->user()->email}}</a></li> 
+          <li><a href="{{route('user.logout')}}">Logout</a></li>
+          @endauth
         </ul>
       </div>
     </div>
