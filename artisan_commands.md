@@ -34,4 +34,22 @@ $ sail artisan make:listener StoreLoginHistory // create listener in App/Listene
 
 $ sail artisan event:generate // it will scan the EventServiceProvider class and generate the missing events (App/Events) and listeners (App/Listeners)
 
+$ sail artisan make:listener StoreLoginHistory // create listener in App/Listeners
+
+$ sail artisan event:generate // it will scan the EventServiceProvider class and generate the missing events (App/Events) and listeners (App/Listeners)
+
+$ sail artisan make:mail SendEmailTest // will create new mail class in the app/mail dir, where we will load the blade view as an email body
+
+$ sail artisan queue:table // generate the queue tables migration files by running the follownig command
+$ sail artisan migrate // run the migration to create table in the db.
+
+$ sail artisan queue:listen // following command will put all the jobs/queues in listening mode to consume the message/data and process via PHP CLI as a linux process (can be multiple process for multiple jobs).
+// * https://medium.com/@mguariero/laravel-queue-job-with-supervisor-easily-9ece7c45365
+// https://medium.com/@kouipheng.lee/laravel-eloquent-lazy-vs-eager-loaded-803852c59e1c
+// https://www.section.io/engineering-education/implementing-laravel-queues/
+// https://medium.com/@mguariero/laravel-queue-job-with-supervisor-easily-9ece7c45365
+// https://www.itsolutionstuff.com/post/laravel-8-queue-step-by-step-tutorial-exampleexample.html
+
+
+$ sail artisan config:clear // to clear config cache before starting the application
 ```

@@ -59,3 +59,19 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::get('/logout', [CustomAuthController::class, "logout"])->name("user.logout");
 });
+
+Route::get('send-job', function(){
+  
+    $details['email'] = 'atif@gmail.com';
+    /**
+     * Following is the method used to dispatch the job/event to be processed by the queue
+     * $ sail artisan queue:listen // following command will put all the jobs/queues in listening mode 
+     *  to consume the message/data and process via PHP CLI as a linux process (can be multiple process for multiple jobs).
+     * 
+     * $ sail artisan config:clear // to clear config cache before starting the application
+     * http://localhost:8025 // visit the following mail client to check if the email is processed and received or not
+     */
+    dispatch(new App\Jobs\SendEmailJob($details));
+  
+    dd('done');
+});
