@@ -15,8 +15,8 @@ job/queue on user logout -- done
 add custom rule for age validation -- done 
 slug for post migration -- done
 observer for post slug -- done
-notification on post delete -- working
-schedular to send email for total number of posts
+notification on post delete -- done
+schedular to send email for total number of posts -- working
 middleware to log request
 guard for admin user
 file upload with web and api
