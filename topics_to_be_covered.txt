@@ -12,10 +12,10 @@ migration to added user_id to posts -- done
 event/listener on user login -- done 
 DB facade in listener to add log in the table -- done
 job/queue on user logout -- done
-add custom rule for age validation -- working 
-slug for post migration
-observer for post slug
-notification on post delete
+add custom rule for age validation -- done 
+slug for post migration -- done
+observer for post slug -- done
+notification on post delete -- working
 schedular to send email for total number of posts
 middleware to log request
 guard for admin user

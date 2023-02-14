@@ -3,6 +3,9 @@
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProductsController;
+use App\Models\User;
+use Notification as NN;
+use App\Notifications\SMSNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,8 +63,8 @@ Route::group(['prefix' => 'user'], function () {
     Route::get('/logout', [CustomAuthController::class, "logout"])->name("user.logout");
 });
 
-Route::get('send-job', function(){
-  
+Route::get('send-job', function () {
+
     $details['email'] = 'atif@gmail.com';
     /**
      * Following is the method used to dispatch the job/event to be processed by the queue
@@ -72,6 +75,23 @@ Route::get('send-job', function(){
      * http://localhost:8025 // visit the following mail client to check if the email is processed and received or not
      */
     dispatch(new App\Jobs\SendEmailJob($details));
-  
+
     dd('done');
+});
+
+Route::get('send-noti', function () {
+    $user = User::first();
+
+    $data = [
+        'name' => 'BOGO',
+        'body' => 'You received an offer.',
+        'thanks' => 'Thank you',
+        'offerText' => 'Check out the offer',
+        'offerUrl' => url('/'),
+        'offer_id' => 007
+    ];
+
+    NN::send($user, new SMSNotification($data));
+
+    dd('Task completed!');
 });

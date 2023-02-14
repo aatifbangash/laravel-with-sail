@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Rules\ValidStringTitle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -27,7 +28,7 @@ class PostsController extends Controller
     {
 
         $request->validate([
-            "title" => "required",
+            "title" => ["required", new ValidStringTitle()],
             "body" => "required"
         ]);
 
@@ -36,6 +37,7 @@ class PostsController extends Controller
          */
         Post::create([
             "title" => $request->title,
+            "user_id" => auth()->user()->id,
             "body" => $request->body
         ]);
 

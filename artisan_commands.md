@@ -52,4 +52,15 @@ $ sail artisan queue:listen // following command will put all the jobs/queues in
 
 
 $ sail artisan config:clear // to clear config cache before starting the application
+
+$ sail artisan make:rule ValidStringTitle // will create custom rule in app/Rules dir
+
+$ sail artisan make:observer PostObserver --model=Post // following cmd is used to create the observer which listen for the Model Events like (Retrieved, Creating, Created, Updating, Updated,Saving, Deleting, etc...)
+
+//Notifications:- It is used to send sms, email or slack message to user. 
+$ sail artisan notifications:table //Following cmd is used to enable notification and create the migration files for the notifications.
+$ sail artisan migrate // run the notification migration and create the tables in the database.
+
+$ sail artisan make:notification SMSNotification // create notification class/event in the app/Notification dir and Notification::send($user, new SMSNotification($data)); // is used to send the notification from route/controller
+
 ```
