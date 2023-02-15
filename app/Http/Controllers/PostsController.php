@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\View;
 class PostsController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('logRequest');
+    }
+
     public function index()
     {
         // $posts = Post::all();

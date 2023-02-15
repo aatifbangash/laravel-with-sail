@@ -16,9 +16,10 @@ add custom rule for age validation -- done
 slug for post migration -- done
 observer for post slug -- done
 notification on post delete -- done
-schedular to send email for total number of posts -- working
-middleware to log request
-guard for admin user
+schedular to send email for total number of posts -- done
+middleware to log request -- done
+guard for admin user -- working
+gate and policy -- working
 file upload with web and api
 create api for project
 create form request and response for api

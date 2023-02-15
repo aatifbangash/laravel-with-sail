@@ -63,5 +63,12 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
+        /**
+         * Following is the custom middleware. Which is registered under the $routeMiddleware property.
+         * 'Key' => 'MiddleWare Class' ==> 'Key' is used to call middleware on the controller in web.php file or in the controller __constructor()
+         * -- check the web.php or the PostsController.php file for the middleware calling example.
+         */
+        'logRequest' => \App\Http\Middleware\LogRequest::class,
     ];
 }

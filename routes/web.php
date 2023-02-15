@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [PostsController::class, "index"])->name("index");
+Route::get('/', [PostsController::class, "index"])->name("index")->middleware('logRequest');
 Route::group([
     'prefix' => 'posts',
     // 'middleware' => ['auth']

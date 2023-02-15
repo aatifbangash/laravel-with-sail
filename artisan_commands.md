@@ -63,4 +63,24 @@ $ sail artisan migrate // run the notification migration and create the tables i
 
 $ sail artisan make:notification SMSNotification // create notification class/event in the app/Notification dir and Notification::send($user, new SMSNotification($data)); // is used to send the notification from route/controller
 
+$ sail artisan make:command RunCronjob --command=run:cronjob // this cmd will create a custom artisan command under app/Console/Commands dir. The main logic should be written in the handel() method.
+  
+$ sail artisan list // you can view your custom command in the list on terminal
+  
+$ sail artisan run:cronjob // to run the custom command from the terminal
+  
+  
+$ sail artisan schedule:run // following command is used to run schedular
+//||| * * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+
+// following method will append logs to /storage/logs/laravel.log
+Log::info("Cron is working fine.");
+
+//Middleware is used to filter the HTTP Request.
+
+
+$ sail artisan make:middleware LogRequest // to create the custom middleware in the App/Http/Middleware dir. then go to app/http/kernel.php and register your custom middleware 
+protected $routeMiddleware = [
+	'logRequest' => \App\Http\Middleware\LogRequest::class,
+];
 ```
