@@ -25,5 +25,5 @@ create api for project
 create form request and response for api
 api integration with vue and react
 check policy contract gate and facade
-create custom service , serive provider and bingin of service
-custom package for laravel which will be compatable with database
+create custom service , service provider and binding of service
+custom package for laravel which will be compatible with database
